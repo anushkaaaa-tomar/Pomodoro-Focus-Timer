@@ -1,17 +1,18 @@
 from tkinter import *
+import math
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
 RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
-WORK_MIN = 25
-SHORT_BREAK_MIN = 5
+WORK_MIN = 1
+SHORT_BREAK_MIN = 2
 LONG_BREAK_MIN = 20
 reps = 0
 timer_on = None
 
-# ---------------------------- TIMER RESET ------------------------------- # 
+# ---------------------------- TIMER RESET ------------------------------- #
 def reset_timer():
     window.after_cancel(timer_on)
     canvas.itemconfig(timer_text, text="00:00")
@@ -19,7 +20,7 @@ def reset_timer():
     checkmarks.config(text="")
     global reps
     reps = 0
-# ---------------------------- TIMER MECHANISM ------------------------------- # 
+# ---------------------------- TIMER MECHANISM ------------------------------- #
 def timer_fun():
     global reps
     reps += 1
@@ -37,7 +38,12 @@ def timer_fun():
     else:
         countdown(work_sec)
         timer.config(text="work", fg=PINK)
-# ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
+
+# ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
+
+
+
+
 def countdown(count):
     count_min = math.floor(count / 60)
     count_Sec = count % 60
@@ -79,13 +85,6 @@ reset_text.grid(column=2, row=2)
 
 checkmarks = Label(bg=YELLOW, fg=GREEN)
 checkmarks.grid(column=1, row=3)
-
-
-window.mainloop()
-# ---------------------------- UI SETUP ------------------------------- #
-
-
-
 
 
 window.mainloop()
